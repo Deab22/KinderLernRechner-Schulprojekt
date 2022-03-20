@@ -1,0 +1,11 @@
+D:\Informatik Projekte\KinderRechner\KinderRechner\bin\Debug\KinderRechner.exe.config
+D:\Informatik Projekte\KinderRechner\KinderRechner\bin\Debug\KinderRechner.exe
+D:\Informatik Projekte\KinderRechner\KinderRechner\bin\Debug\KinderRechner.pdb
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.csproj.AssemblyReference.cache
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.csproj.SuggestedBindingRedirects.cache
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.Properties.Resources.resources
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.csproj.GenerateResource.cache
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.csproj.CoreCompileInputs.cache
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.exe
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.pdb
+D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.frm_Kinderrechner.resources

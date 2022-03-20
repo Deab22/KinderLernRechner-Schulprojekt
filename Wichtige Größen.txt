@@ -1,0 +1,4 @@
+Ganzes fenster: 451, 354
+
+Panel: 411, 291 (Position: 12, 12)
+
