@@ -20,7 +20,7 @@ namespace KinderRechner
 
         }
         bool[] operators = {false, false, false, false};//0=+, 1=-, 2=*, 3=/
-        int range = 10;
+        int range;
         int rounds = 10;
         int completed = 0;
 
@@ -88,7 +88,10 @@ namespace KinderRechner
             if (cbb_Schwierigkeit.SelectedIndex == 2) range = 50;
             if (cbb_Schwierigkeit.SelectedIndex == 3) range = 100;
 
-
+            try
+            {
+                rounds = Convert.ToInt32(txb_Fragen.Text);
+            }catch { }
         }
     }
 }

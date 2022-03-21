@@ -9,3 +9,14 @@ D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.cspro
 D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.exe
 D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.pdb
 D:\Informatik Projekte\KinderRechner\KinderRechner\obj\Debug\KinderRechner.frm_Kinderrechner.resources
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\bin\Debug\KinderRechner.exe.config
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\bin\Debug\KinderRechner.exe
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\bin\Debug\KinderRechner.pdb
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.csproj.AssemblyReference.cache
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.csproj.SuggestedBindingRedirects.cache
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.frm_Kinderrechner.resources
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.Properties.Resources.resources
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.csproj.GenerateResource.cache
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.csproj.CoreCompileInputs.cache
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.exe
+C:\Users\Henri\Documents\GitHub\KinderLernRechner-Schulprojekt\KinderRechner\obj\Debug\KinderRechner.pdb
