@@ -360,6 +360,7 @@
             this.btn_End_Fertig.Text = "Fertig";
             this.btn_End_Fertig.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_End_Fertig.UseVisualStyleBackColor = true;
+            this.btn_End_Fertig.Click += new System.EventHandler(this.btn_End_Fertig_Click);
             // 
             // lbl_End_Prozent
             // 

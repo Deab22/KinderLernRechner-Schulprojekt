@@ -46,7 +46,7 @@ namespace KinderRechner
             if (scene == 3) pnl_End.Visible = true;
         }
         
-        //Screen 1
+        //Scene 1
         private void btn_Main_plus_Click(object sender, EventArgs e)
         {
             if (operators[0] == true)
@@ -127,7 +127,7 @@ namespace KinderRechner
             NeueAufgabe();
         }
 
-        //Screen 2
+        //Scene 2
         public void NeueAufgabe()
         {
             txb_antwort.Text = "";
@@ -236,6 +236,11 @@ namespace KinderRechner
             if(roundNumber == rounds)
             {
                 ChangeScene(3);
+                double temp1 = richtigeAntworten;
+                double temp2 = rounds;
+                double Prozent = temp1 / temp2 * 100;
+                lbl_End_vonRichtig.Text = richtigeAntworten + " von " + rounds + " richtig!";
+                lbl_End_Prozent.Text = "Das sind " + Prozent + "%!";
             }
             else
             {
@@ -244,6 +249,11 @@ namespace KinderRechner
             }
             
 
+        }
+        //Scene 3
+        private void btn_End_Fertig_Click(object sender, EventArgs e)
+        {
+            ChangeScene(1);
         }
     }
 }
