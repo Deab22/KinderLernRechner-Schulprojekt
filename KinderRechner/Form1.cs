@@ -17,6 +17,8 @@ namespace KinderRechner
             InitializeComponent();
             cbb_Schwierigkeit.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_Schwierigkeit.SelectedIndex = 0;
+            pnl_Aufg.Visible = false;
+            pnl_End.Visible = false;
 
         }
         bool[] operators = {false, false, false, false};//0=+, 1=-, 2=*, 3=/
@@ -24,11 +26,24 @@ namespace KinderRechner
         int range;
         int rounds = 10;
         int roundNumber = 0;
+        int Lösung;
+        int LösungRest;
+        int Antwort;
+        int AntwortDivide;
+        int AntwortRest;
+        int richtigeAntworten;
+        bool beantwortet = false;
+        bool richtig;
         Random random = new Random();
 
         public void ChangeScene(int scene)//wechselt zwischen unterschiedlichen Scenen
         {
-
+            pnl_Aufg.Visible = false;
+            pnl_Main.Visible = false;
+            pnl_End.Visible = false;
+            if (scene == 1) pnl_Main.Visible = true;
+            if (scene == 2) pnl_Aufg.Visible = true;
+            if (scene == 3) pnl_End.Visible = true;
         }
         
         //Screen 1
@@ -96,6 +111,7 @@ namespace KinderRechner
             }
             
             roundNumber = 1;
+            richtigeAntworten = 0;
 
             if (cbb_Schwierigkeit.SelectedIndex == 0) range = 10;
             if (cbb_Schwierigkeit.SelectedIndex == 1) range = 20;
@@ -117,6 +133,7 @@ namespace KinderRechner
             txb_antwort.Text = "";
             txb_AntwortDivide.Text = "";
             txb_AntwortRest.Text = "";
+            beantwortet = false;
 
             grb_Lösung.Visible = false;
             lbl_Aufg_progress.Text = "Frage " + roundNumber + " von " + rounds;
@@ -159,6 +176,73 @@ namespace KinderRechner
 
         private void btn_enter_Click(object sender, EventArgs e)
         {
+            if (beantwortet) return;
+
+
+            if (Frage[1] == 0) Lösung = Frage[0] + Frage[2];
+            if (Frage[1] == 1) Lösung = Frage[0] - Frage[2];
+            if (Frage[1] == 2) Lösung = Frage[0] * Frage[2];
+            if (Frage[1] == 3)
+            {
+                double temp = Frage[0] / Frage[2];
+                Lösung = Convert.ToInt32(Math.Floor(temp));
+                LösungRest = Convert.ToInt32(Frage[0] % Frage[2]);
+            }
+
+            try
+            {
+                if (Frage[1] < 3)
+                {
+                    Antwort = Convert.ToInt32(txb_antwort.Text);
+                    if (Antwort == Lösung)
+                    {
+                        richtig = true;
+                    }
+                    else richtig = false;
+                }
+                else
+                {
+                    AntwortDivide = Convert.ToInt32(txb_AntwortDivide.Text);
+                    AntwortRest = Convert.ToInt32(txb_AntwortRest.Text);
+                    if (AntwortDivide == Lösung && AntwortRest == LösungRest)
+                    {
+                        richtig = true;
+                    }
+                    else richtig = false;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Bitte nur Zahlen eintragen!");
+                richtig = false;
+            }
+
+            if (richtig)
+            {
+                lbl_richtigFalsch.Text = "Das ist Richtig!";
+                richtigeAntworten += 1;
+            }
+            else
+            {
+                lbl_richtigFalsch.Text = "Das ist leider Falsch...";
+            }
+            lbl_vonRichtig.Text = richtigeAntworten + " von " + roundNumber + " richtig";
+            grb_Lösung.Visible = true;
+            beantwortet = true;
+        }
+
+        private void btn_weiter_Click(object sender, EventArgs e)
+        {
+            if(roundNumber == rounds)
+            {
+                ChangeScene(3);
+            }
+            else
+            {
+                roundNumber += 1;
+                NeueAufgabe();
+            }
+            
 
         }
     }
