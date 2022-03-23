@@ -202,6 +202,7 @@ namespace KinderRechner
                 }
                 else
                 {
+                    if (txb_AntwortRest.Text == "") txb_AntwortRest.Text = "0";
                     AntwortDivide = Convert.ToInt32(txb_AntwortDivide.Text);
                     AntwortRest = Convert.ToInt32(txb_AntwortRest.Text);
                     if (AntwortDivide == Lösung && AntwortRest == LösungRest)
