@@ -24,14 +24,14 @@ namespace KinderRechner
         bool[] operators = {false, false, false, false};//0=+, 1=-, 2=*, 3=/
         int[] Frage = { 0, 0, 0 };//0=Zahl1, 1=operator (siehe oben), 2=Zahl2
         int range;
-        int rounds = 10;
-        int roundNumber = 0;
-        int Lösung;
+        int rounds = 10;          //Anzahl Fragen
+        int roundNumber = 0;      //Anzahl beantwortete Fragen
+        int Lösung;               //Richtige Lösungen
         int LösungRest;
-        int Antwort;
+        int Antwort;              //Antworten User
         int AntwortDivide;
         int AntwortRest;
-        int richtigeAntworten;
+        int richtigeAntworten;    //Anahl richtige Antworten
         bool beantwortet = false;
         bool richtig;
         Random random = new Random();
@@ -46,8 +46,8 @@ namespace KinderRechner
             if (scene == 3) pnl_End.Visible = true;
         }
         
-        //Scene 1
-        private void btn_Main_plus_Click(object sender, EventArgs e)
+        //Scene 1: Hauptmenü
+        private void btn_Main_plus_Click(object sender, EventArgs e)//Konnte leider keine Funktion für diesen Teil schreiben...
         {
             if (operators[0] == true)
             {
@@ -120,19 +120,20 @@ namespace KinderRechner
 
             try
             {
-                rounds = Convert.ToInt32(txb_Fragen.Text);
+                rounds = Convert.ToInt32(txb_Fragen.Text);//wenn Text keine Zahl, nehme vorherige Zahl
             }catch { }
 
             ChangeScene(2);
             NeueAufgabe();
         }
 
-        //Scene 2
+        //Scene 2: Aufgaben
         public void NeueAufgabe()
         {
-            txb_antwort.Text = "";
+            txb_antwort.Text = "";//Bildschirm und Variablen zurücksetzen
             txb_AntwortDivide.Text = "";
             txb_AntwortRest.Text = "";
+            btn_weiter.Enabled = false;
             beantwortet = false;
 
             grb_Lösung.Visible = false;
@@ -140,16 +141,18 @@ namespace KinderRechner
             pgb_progress.Maximum = rounds;//Ladebalken aktualisieren
             pgb_progress.Value = roundNumber;
 
-            Frage[0] = random.Next(0, range+1);
+            Frage[0] = random.Next(0, range+1);//Zufällige Frage generieren
             Frage[2] = random.Next(0, range+1);
 
             Frage[1] = random.Next(0, 3);
-            while (operators[Frage[1]] == false)
+            while (operators[Frage[1]] == false)//Zufälliger Operator
             {
                 Frage[1] = random.Next(0, 4);
             }
 
-            lbl_Aufg_header.Text = "Was ist " + Frage[0];
+            if(Frage[1] == 3 && Frage[2] == 0) Frage[2] = 1;//Kein Teilen durch Null!
+
+            lbl_Aufg_header.Text = "Was ist " + Frage[0];//Aufgabe als Text anzeigen
 
             if (Frage[1] == 0) lbl_Aufg_header.Text = lbl_Aufg_header.Text + " + ";
             if (Frage[1] == 1) lbl_Aufg_header.Text = lbl_Aufg_header.Text + " - ";
@@ -158,7 +161,7 @@ namespace KinderRechner
 
             lbl_Aufg_header.Text = lbl_Aufg_header.Text + Frage[2] + "?";
 
-            if (Frage[1] == 3)
+            if (Frage[1] == 3)//Spezieller Bildschirm für Geteilt
             {
                 txb_AntwortDivide.Visible = true;
                 txb_AntwortRest.Visible = true;
@@ -174,24 +177,24 @@ namespace KinderRechner
             }
         }
 
-        private void btn_enter_Click(object sender, EventArgs e)
+        private void btn_enter_Click(object sender, EventArgs e)//Lösung überprüfen
         {
             if (beantwortet) return;
 
 
-            if (Frage[1] == 0) Lösung = Frage[0] + Frage[2];
-            if (Frage[1] == 1) Lösung = Frage[0] - Frage[2];
-            if (Frage[1] == 2) Lösung = Frage[0] * Frage[2];
-            if (Frage[1] == 3)
-            {
-                double temp = Frage[0] / Frage[2];
+            if (Frage[1] == 0) Lösung = Frage[0] + Frage[2];//+
+            if (Frage[1] == 1) Lösung = Frage[0] - Frage[2];//-
+            if (Frage[1] == 2) Lösung = Frage[0] * Frage[2];//*
+            if (Frage[1] == 3)                              //:
+            {        //temp = Temporary Variable
+                double temp = Frage[0] / Frage[2];//spezielle Rechnung für Geteilt: Ohne Komma und Rest
                 Lösung = Convert.ToInt32(Math.Floor(temp));
                 LösungRest = Convert.ToInt32(Frage[0] % Frage[2]);
             }
 
             try
             {
-                if (Frage[1] < 3)
+                if (Frage[1] < 3)//Auslesen von Input
                 {
                     Antwort = Convert.ToInt32(txb_antwort.Text);
                     if (Antwort == Lösung)
@@ -218,7 +221,7 @@ namespace KinderRechner
                 richtig = false;
             }
 
-            if (richtig)
+            if (richtig)//Feedback an User
             {
                 lbl_richtigFalsch.Text = "Das ist Richtig!";
                 richtigeAntworten += 1;
@@ -229,29 +232,29 @@ namespace KinderRechner
             }
             lbl_vonRichtig.Text = richtigeAntworten + " von " + roundNumber + " richtig";
             grb_Lösung.Visible = true;
+            btn_weiter.Enabled = true;
             beantwortet = true;
         }
 
         private void btn_weiter_Click(object sender, EventArgs e)
         {
-            if(roundNumber == rounds)
+            if(roundNumber == rounds)//Wechsel zu Ende
             {
                 ChangeScene(3);
-                double temp1 = richtigeAntworten;
-                double temp2 = rounds;
-                double Prozent = temp1 / temp2 * 100;
+                
+                double Prozent = Convert.ToDouble(richtigeAntworten) / Convert.ToDouble(rounds) * 100;
                 lbl_End_vonRichtig.Text = richtigeAntworten + " von " + rounds + " richtig!";
                 lbl_End_Prozent.Text = "Das sind " + Prozent + "%!";
             }
             else
             {
-                roundNumber += 1;
+                roundNumber += 1;//Nächste Frage
                 NeueAufgabe();
             }
             
 
         }
-        //Scene 3
+        //Scene 3: Ende
         private void btn_End_Fertig_Click(object sender, EventArgs e)
         {
             ChangeScene(1);
